@@ -23,7 +23,11 @@
                     <div class="form-group">
                         <label>Author</label>
                         <input type="text" class="form-control" v-model="task.author" disabled>
-                    </div>                    
+                    </div>
+                    <div class="form-check form-switch">
+                        <label>Estado</label>
+                        <input type="checkbox" class="form-check-input" v-model="task.state" checked>
+                    </div>
                     <button type="submit" class="btn btn-primary">Add Task</button>
                 </form>
             </div>

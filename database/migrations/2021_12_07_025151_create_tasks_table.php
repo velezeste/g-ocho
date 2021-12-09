@@ -20,6 +20,7 @@ class CreateTasksTable extends Migration
             $table->datetime('dataEnd');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->boolean('state')->default('1');
             $table->string('author');
             $table->timestamps();
         });

@@ -17,12 +17,12 @@
                         <input type="datetime-local" class="form-control" v-model="task.dataEnd">
                     </div>
                     <div class="form-group">
-                        <label>Id Autor</label>
-                        <input type="text" class="form-control" v-model="task.user_id" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label>Author</label>
+                        <label>Autor</label>
                         <input type="text" class="form-control" v-model="task.author" disabled>
+                    </div>
+                    <div class="form-check form-switch">
+                        <label>Estado</label>
+                        <input type="checkbox" class="form-check-input" v-model="task.state" checked>
                     </div>
                     <button type="submit" class="btn btn-primary">Update Task</button>
                 </form>

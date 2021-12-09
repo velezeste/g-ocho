@@ -13,7 +13,8 @@ class Task extends Model
         'task', 
         'detail',
         'dataEnd',
-        'user_id',
-        'author'
+        'user_id',        
+        'author',
+        'state'
     ];
 }

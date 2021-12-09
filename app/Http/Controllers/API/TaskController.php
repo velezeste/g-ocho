@@ -23,7 +23,8 @@ class TaskController extends Controller
             'detail' => $request->detail,
             'dataEnd' => $request->dataEnd,
             'user_id' => $request->user_id,
-            'author' => $request->author
+            'author' => $request->author,
+            'state' => $request->state
         ]);
         $task->save();
 

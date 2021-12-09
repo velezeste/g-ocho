@@ -1,6 +1,12 @@
 <template>
     <div>
-        <h4 class="text-center">All Tasks</h4><br/>
+      <v-data-table
+    :headers="headers"
+    :items="tasks"
+    sort-by="id"
+    class="elevation-1"
+  ></v-data-table>
+        <h4 class="text-center">All Tasks</h4><br/>        
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -11,6 +17,7 @@
                 <th>Finaliza el</th>
                 <th>Actualizado el</th>
                 <th>Autor</th>
+                <th>Estado</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -23,8 +30,10 @@
                 <td>{{ task.dataEnd }}</td>
                 <td>{{ task.updated_at }}</td>
                 <td>{{ task.author }}</td>
+                <td v-if="task.state == true">Activo</td>
+                <td v-else>Inactivo</td>
                 <td>
-                    <div class="btn-group" role="group">
+                    <div class="btn-group" role="group" v-show="task.author == name || role == 'admin'">
                         <router-link :to="{name: 'edittask', params: { id: task.id }}" class="btn btn-primary">Editar
                         </router-link>
                         <button class="btn btn-danger" @click="deleteTask(task.id)">Eliminar</button>
@@ -39,13 +48,33 @@
 </template>
 
 <script>
-export default {
+export default {    
     data() {
         return {
-            tasks: []
+            tasks: [],
+            name: null,
+            role: null,
+            headers: [
+        {
+          text: 'ID',
+          align: 'start',
+          sortable: true,
+          value: 'id',
+        },
+        { text: 'Tarea', value: 'task' },
+        { text: 'Detalles', value: 'detail' },
+        { text: 'Creado el', value: 'created_at' },
+        { text: 'Finaliza el', value: 'dataEnd' },
+        { text: 'Actualizado el', value: 'updated_at' },
+        { text: 'Autor', value: 'author' },
+        { text: 'Estado', value: 'state' },
+        { text: 'Actions', value: 'actions', sortable: false },
+      ],            
         }
-    },
+    },    
     created() {
+        this.name = window.Laravel.user.name
+        this.role = window.Laravel.user.role
         this.$axios.get('/sanctum/csrf-cookie').then(response => {
             this.$axios.get('/api/tasks')
                 .then(response => {
