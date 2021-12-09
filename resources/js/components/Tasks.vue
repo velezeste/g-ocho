@@ -1,12 +1,7 @@
 <template>
-    <div>
-      <v-data-table
-    :headers="headers"
-    :items="tasks"
-    sort-by="id"
-    class="elevation-1"
-  ></v-data-table>
-        <h4 class="text-center">All Tasks</h4><br/>        
+    <div>      
+        <h4 class="text-center">All Tasks</h4><br/>
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">        
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -21,7 +16,7 @@
                 <th>Actions</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="myTable">
             <tr v-for="task in tasks" :key="task.id">
                 <td>{{ task.id }}</td>
                 <td>{{ task.task }}</td>
@@ -48,28 +43,13 @@
 </template>
 
 <script>
+import $ from 'jquery'
 export default {    
     data() {
         return {
             tasks: [],
             name: null,
-            role: null,
-            headers: [
-        {
-          text: 'ID',
-          align: 'start',
-          sortable: true,
-          value: 'id',
-        },
-        { text: 'Tarea', value: 'task' },
-        { text: 'Detalles', value: 'detail' },
-        { text: 'Creado el', value: 'created_at' },
-        { text: 'Finaliza el', value: 'dataEnd' },
-        { text: 'Actualizado el', value: 'updated_at' },
-        { text: 'Autor', value: 'author' },
-        { text: 'Estado', value: 'state' },
-        { text: 'Actions', value: 'actions', sortable: false },
-      ],            
+            role: null,            
         }
     },    
     created() {
@@ -99,6 +79,16 @@ export default {
             })
         }
     },
+    mounted () {
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    },    
     beforeRouteEnter(to, from, next) {
         if (!window.Laravel.isLoggedin) {
             window.location.href = "/";

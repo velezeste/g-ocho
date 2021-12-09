@@ -26,6 +26,8 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "vue-router": "^4.0.12"
+        "jquery": "^3.6.0",
+        "vue-router": "^4.0.12",
+        "vue-table-dynamic": "^0.4.10"
     }
 }
