@@ -6,16 +6,35 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Task;
 
+/**
+* @OA\Info(title="API G-OCHO", version="1.0")
+*
+* @OA\Server(url="http://127.0.0.1:8000")
+*/
+
 class TaskController extends Controller
 {
     // all tasks
+    /**
+    * @OA\Get(
+    *     path="/api/tasks",
+    *     summary="Mostrar tareas",
+    *     @OA\Response(
+    *         response=200,
+    *         description="Mostrar todas las tareas."
+    *     ),
+    *     @OA\Response(
+    *         response="default",
+    *         description="Ha ocurrido un error."
+    *     )
+    * )
+    */
     public function index()
     {
         $tasks = Task::all()->toArray();
         return array_reverse($tasks);
     }
-
-    // add task
+    
     public function add(Request $request)
     {
         $task = new Task([

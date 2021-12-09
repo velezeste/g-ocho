@@ -11,6 +11,27 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+    /**
+    * @OA\Get(
+    *     path="/api/user",
+    *     summary="Mostrar usuarios",
+    *     @OA\Response(
+    *         response=200,
+    *         description="Mostrar todos los usuarios."
+    *     ),
+    *     @OA\Response(
+    *         response="default",
+    *         description="Ha ocurrido un error."
+    *     )
+    * )
+    */
+    public function index()
+    {
+        $user = User::all()->toArray();
+        return array_reverse($user);
+    }
+
     /**
      * Register
      */

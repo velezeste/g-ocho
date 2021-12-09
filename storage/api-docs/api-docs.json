@@ -1,0 +1,45 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API G-OCHO",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000"
+        }
+    ],
+    "paths": {
+        "/api/tasks": {
+            "get": {
+                "summary": "Mostrar tareas",
+                "operationId": "c641d93887fb50d557f18a7d11d0fd70",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todas las tareas."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "get": {
+                "summary": "Mostrar usuarios",
+                "operationId": "fe9992e1e7e6e2d260628b2dbd89ef72",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todos los usuarios."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
