@@ -10,6 +10,10 @@ import Tasks from '../components/Tasks';
 import AddTask from '../components/AddTask';
 import EditTask from '../components/EditTask';
 
+import Users from '../components/Users';
+import AddUser from '../components/AddUser';
+import EditUser from '../components/EditUser';
+
 export const routes = [
     {
         name: 'home',
@@ -50,6 +54,21 @@ export const routes = [
         name: 'edittask',
         path: '/tasks/edit/:id',
         component: EditTask
+    },
+    {
+        name: 'users',
+        path: '/users',
+        component: Users
+    },
+    {
+        name: 'adduser',
+        path: '/users/add',
+        component: AddUser
+    },
+    {
+        name: 'edituser',
+        path: '/users/edit/:id',
+        component: EditUser
     },
 ];
 

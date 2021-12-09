@@ -14,7 +14,7 @@ class UserController extends Controller
 
     /**
     * @OA\Get(
-    *     path="/api/user",
+    *     path="/api/users",
     *     summary="Mostrar usuarios",
     *     @OA\Response(
     *         response=200,
@@ -28,8 +28,46 @@ class UserController extends Controller
     */
     public function index()
     {
-        $user = User::all()->toArray();
-        return array_reverse($user);
+        $users = User::all()->toArray();
+        return array_reverse($users);
+    }
+
+    public function add(Request $request)
+    {
+        $users = new User([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role
+        ]);
+        $users->save();
+
+        return response()->json('The user successfully added');
+    }
+
+    // edit user
+    public function edit($id)
+    {
+        $user = User::find($id);
+        return response()->json($user);
+    }
+
+    // update user
+    public function update($id, Request $request)
+    {
+        $user = User::find($id);
+        $user->update($request->all());
+
+        return response()->json('The user successfully updated');
+    }
+
+    // delete user
+    public function delete($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        return response()->json('The user successfully deleted');
     }
 
     /**

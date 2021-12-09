@@ -8,9 +8,10 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse">
                 <!-- for logged-in user-->
-                <div class="navbar-nav" v-if="isLoggedIn">
+                <div class="navbar-nav" v-if="isLoggedIn" >
                     <router-link to="/dashboard" class="nav-item nav-link">Inicio</router-link>
                     <router-link to="/tasks" class="nav-item nav-link">Tareas</router-link>
+                    <router-link to="/users" class="nav-item nav-link" v-show="role == 'admin'">Usuarios</router-link>
                     <a class="nav-item nav-link" style="cursor: pointer;" @click="logout">Cerrar Sesión</a>
                 </div>
                 <!-- for non-logged user-->
@@ -34,11 +35,13 @@ export default {
     data() {
         return {
             isLoggedIn: false,
+            role: null            
         }
     },
     created() {
         if (window.Laravel.isLoggedin) {
             this.isLoggedIn = true
+            this.role = window.Laravel.user.role
         }
     },
     methods: {
