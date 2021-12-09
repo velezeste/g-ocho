@@ -23047,7 +23047,7 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
 
-      if (this.password.length > 0) {
+      if (this.password.length > 0 && this.email.length > 0) {
         this.$axios.get('/sanctum/csrf-cookie').then(function (response) {
           _this.$axios.post('api/login', {
             email: _this.email,
@@ -23064,6 +23064,8 @@ __webpack_require__.r(__webpack_exports__);
             console.error(error);
           });
         });
+      } else {
+        alert("Todos los campos son obligatorios");
       }
     }
   },
@@ -23104,7 +23106,7 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
 
-      if (this.password.length > 0) {
+      if (this.password.length > 0 && this.email.length > 0 && this.name.length > 0) {
         axios.get('/sanctum/csrf-cookie').then(function (response) {
           axios.post('api/register', {
             name: _this.name,
@@ -23120,6 +23122,8 @@ __webpack_require__.r(__webpack_exports__);
             console.error(error);
           });
         });
+      } else {
+        alert("Todos los campos son obligatorios");
       }
     }
   },
@@ -23305,7 +23309,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_2 = {
-  "class": "row"
+  "class": "row justify-content-center"
 };
 var _hoisted_3 = {
   "class": "col-md-6"
@@ -23449,7 +23453,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_2 = {
-  "class": "row"
+  "class": "row justify-content-center"
 };
 var _hoisted_3 = {
   "class": "col-md-6"
@@ -23832,7 +23836,7 @@ var _hoisted_10 = {
   "class": "col-md-6"
 };
 var _hoisted_11 = {
-  "class": "form-group row"
+  "class": "form-group row mt-2"
 };
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
@@ -23861,9 +23865,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $data.email = $event;
     }),
-    required: "",
     autofocus: "",
-    autocomplete: "off"
+    autocomplete: "off",
+    required: ""
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.email]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -23873,13 +23877,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.password = $event;
     }),
-    required: "",
-    autocomplete: "off"
+    autocomplete: "off",
+    required: ""
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.password]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
-    "class": "btn btn-primary",
+    "class": "btn btn-primary mt-2",
     onClick: _cache[2] || (_cache[2] = function () {
       return $options.handleSubmit && $options.handleSubmit.apply($options, arguments);
     })
@@ -23943,7 +23947,7 @@ var _hoisted_10 = {
   "class": "col-md-6"
 };
 var _hoisted_11 = {
-  "class": "form-group row"
+  "class": "form-group row mt-2"
 };
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
@@ -23957,7 +23961,7 @@ var _hoisted_13 = {
   "class": "col-md-6"
 };
 var _hoisted_14 = {
-  "class": "form-group row"
+  "class": "form-group row mt-2"
 };
 
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
@@ -23971,7 +23975,7 @@ var _hoisted_16 = {
   "class": "col-md-6"
 };
 var _hoisted_17 = {
-  "class": "form-group row mb-0"
+  "class": "form-group row mb-0 mt-2"
 };
 var _hoisted_18 = {
   "class": "col-md-8 offset-md-4"
